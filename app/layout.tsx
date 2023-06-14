@@ -11,6 +11,8 @@ const font = Nunito({
   subsets: ['latin'], 
 });
 
+import Navbar from '@/app/components/navbar/Navbar';
+
 export default function RootLayout({
   children,
 }: {
@@ -19,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
+        <Navbar/>
         {children}
       </body>
     </html>
