@@ -12,6 +12,7 @@ const font = Nunito({
 });
 
 import Navbar from '@/app/components/navbar/Navbar';
+import ClientOnly from './components/ClientOnly';
 
 export default function RootLayout({
   children,
@@ -21,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
-        <Navbar/>
+        <ClientOnly>
+          <Navbar/>
+        </ClientOnly>
         {children}
       </body>
     </html>
