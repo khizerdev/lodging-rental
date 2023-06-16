@@ -12,7 +12,10 @@ const font = Nunito({
 });
 
 import Navbar from '@/app/components/navbar/Navbar';
-import ClientOnly from './components/ClientOnly';
+import ClientOnly from '@/app/components/ClientOnly';
+import RegisterModal from '@/app/components/modals/RegisterModal';
+
+import ToasterProvider from '@/app/providers/ToasterProvider';
 
 export default function RootLayout({
   children,
@@ -22,7 +25,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={font.className}>
+      
         <ClientOnly>
+        <ToasterProvider />
+          <RegisterModal/>
           <Navbar/>
         </ClientOnly>
         {children}
