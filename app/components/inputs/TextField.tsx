@@ -42,8 +42,8 @@ const TextField: React.FC<TextFieldProps> = ({
         className={`
           peer
           w-full
-          p-4
-          pt-6 
+          p-1
+          pt-7 
           font-light 
           bg-white 
           border-2
