@@ -39,7 +39,7 @@ const Button: React.FC<ButtonProps> = ({label, onClick, disabled, outline, small
             (
                 <Icon
                 size={24}
-                className="absolute left-4 top-3"
+                className="absolute left-2 top-3"
                 />
             )
         }
