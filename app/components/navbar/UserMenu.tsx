@@ -1,17 +1,27 @@
 'use client';
 
+import { User } from "@prisma/client";
+
 import { useCallback, useState } from "react";
 import { AiOutlineMenu } from "react-icons/ai";
 
+import { signOut } from "next-auth/react";
+
 import useRegisterModal from "@/app/hooks/useRegisterModal";
+import useLoginModal from "@/app/hooks/useLoginModal";
 
 import Avatar from "../Avatar";
 import MenuItem from "./MenuItem";
 
-const UserMenu = () => {
+interface UserMenuProps {
+    currentUser?: User | null
+}
+
+const UserMenu: React.FC<UserMenuProps> = ({currentUser}) => {
 
     const [isOpen, setIsOpen] = useState(false);
     const registerModal = useRegisterModal();
+    const loginModal = useLoginModal();
 
     const toggleOpen = useCallback(() => {
         setIsOpen((value) => !value);
@@ -36,16 +46,46 @@ const UserMenu = () => {
             isOpen &&  (
                 <div className="absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm">
                     <div className="flex flex-col cursor-pointer">
-                        <>
-                            <MenuItem
-                                label="Login" 
+                    {currentUser ? (
+                            <>
+                                <MenuItem 
+                                label="My trips" 
                                 onClick={() => {}}
-                            />
-                            <MenuItem
+                                />
+                                <MenuItem 
+                                label="My favorites" 
+                                onClick={() => {}}
+                                />
+                                <MenuItem 
+                                label="My reservations" 
+                                onClick={() => {}}
+                                />
+                                <MenuItem 
+                                label="My properties" 
+                                onClick={() => {}}
+                                />
+                                <MenuItem 
+                                label="Places your home" 
+                                onClick={() => {}}
+                                />
+                                <hr />
+                                <MenuItem 
+                                label="Logout" 
+                                onClick={() => signOut()}
+                                />
+                            </>
+                        ) : (
+                            <>
+                                <MenuItem 
+                                label="Login" 
+                                onClick={loginModal.onOpen}
+                                />
+                                <MenuItem 
                                 label="Sign up" 
                                 onClick={registerModal.onOpen}
-                            />
-                        </>
+                                />
+                            </>
+                        )}
                     </div>
                 </div>
             )
