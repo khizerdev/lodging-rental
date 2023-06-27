@@ -67,7 +67,6 @@ const ListingCard: React.FC<ListingCardProps> = ({
 
         return `${format(start, 'PP')} - ${format(end, 'PP')}`;
     }, [reservation]);
-
   return (
     <div 
       onClick={() => router.push(`/listings/${data.id}`)} 
@@ -75,13 +74,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
     >
       <div className="flex flex-col gap-2 w-full">
         <div 
-          className="
-            aspect-square 
-            w-full 
-            relative 
-            overflow-hidden 
-            rounded-xl
-          "
+          className="aspect-square w-full relative overflow-hidden rounded-xl"
         >
           <Image
             fill
@@ -89,11 +82,7 @@ const ListingCard: React.FC<ListingCardProps> = ({
             src={data.imageSrc}
             alt="Listing"
           />
-          <div className="
-            absolute
-            top-3
-            right-3
-          ">
+          <div className="absolute top-3 right-3">
             <HeartButton 
               listingId={data.id} 
               currentUser={currentUser}
